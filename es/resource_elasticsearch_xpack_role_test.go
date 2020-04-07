@@ -16,7 +16,6 @@ import (
 )
 
 func TestAccElasticsearchXpackRole(t *testing.T) {
-
 	provider := Provider().(*schema.Provider)
 	err := provider.Configure(&terraform.ResourceConfig{})
 	if err != nil {
@@ -188,7 +187,6 @@ func testAccRoleResource(resourceName string) string {
 	}
 	`, resourceName)
 }
-
 func testAccRoleResource_Updated(resourceName string) string {
 	return fmt.Sprintf(`
 	resource "elasticsearch_xpack_role" "test" {
