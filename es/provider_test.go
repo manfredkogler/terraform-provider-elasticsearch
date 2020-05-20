@@ -44,9 +44,10 @@ func init() {
 
 	opendistroOriginalConfigureFunc := testAccOpendistroProvider.ConfigureFunc
 	testAccOpendistroProvider.ConfigureFunc = func(d *schema.ResourceData) (interface{}, error) {
-		d.Set("url", "http://127.0.0.1:9220")
-		d.Set("username", "admin")
-		d.Set("password", "admin")
+		err := d.Set("url", "http://admin:admin@127.0.0.1:9220")
+		if err != nil {
+			return nil, err
+		}
 		return opendistroOriginalConfigureFunc(d)
 	}
 }
